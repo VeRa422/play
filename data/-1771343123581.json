@@ -4,7 +4,7 @@
   "startBtnText": "СТАРТ",
   "retryBtnText": "Ещё раз",
   "victoryText": "ПОБЕДА!",
-  "victoryMsg": "Отличная работа!",
+  "victoryMsg": "Отличная работа! Ты справился!",
   "gameoverText": "ИГРА ОКОНЧЕНА",
   "lang": "ru",
   "enableTimer": true,
@@ -26,7 +26,7 @@
   "sndCountdown": "https://play.veraiva288.workers.dev/7.mp3",
   "levels": {
     "1": [
-      {"q": "Вопрос 1", "options": ["Верно", "Нет"], "correct": 0}
+      {"q": "Тут твой вопрос", "options": ["Вариант 1", "Вариант 2"], "correct": 0}
     ]
   },
   "levelsMeta": { "1": { "name": "Уровень 1", "hero": "" } }
