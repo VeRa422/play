@@ -26,7 +26,7 @@
   "sndCountdown": "https://play.veraiva288.workers.dev/7.mp3",
   "levels": {
     "1": [
-      {"q": "Вопрос 1", "options": ["Да", "Нет"], "correct": 0}
+      {"q": "Вопрос 1", "options": ["Верно", "Нет"], "correct": 0}
     ]
   },
   "levelsMeta": { "1": { "name": "Уровень 1", "hero": "" } }
