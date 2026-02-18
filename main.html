@@ -136,6 +136,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#0f172a;font-family:
         // Лягушка-эмодзи показывается только если нет ни глобального, ни уровневого героя
         out+='#frog::after{content:"\\1F438";font-size:calc(50px*'+heroSize+'/100);line-height:1;}';
         out+='#frog.no-emoji::after{display:none!important;}';
+        out+='#frog[style*="background-image"]::after{display:none!important;}';
         // Если глобальный герой задан — скрываем эмодзи через font-size:0
         if(imgHero)out+='#frog::after{font-size:0!important;}';
         out+='.jf{filter:drop-shadow(0 28px 18px rgba(0,0,0,.35))!important;transform:translate(-50%,calc(-'+heroV+'% - 20%)) scale(1.4)!important;}';
