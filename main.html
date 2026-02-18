@@ -33,7 +33,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#0f172a;font-family:
     try{var gameId=atob(g.replace(/-/g,'+').replace(/_/g,'/'));}catch(e){document.getElementById('msg').textContent='Ошибка данных';return;}
 
     // ✅ ИСПРАВЛЕНО: читаем данные с GitHub Pages, а не с хоста плеера
-    var url='https://vera422.github.io/play/data/'+gameId+'.json';
+    var url='https://vera422.github.io/texts/data/'+gameId+'.json';
 
     var tries=0;
     function load(){
