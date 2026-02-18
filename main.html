@@ -133,7 +133,10 @@ html,body{width:100%;height:100%;overflow:hidden;background:#0f172a;font-family:
         out+='@keyframes lb{0%{transform:scale(1.1) translateY(0)}30%{transform:scale(1.05) translateY(7px)}60%{transform:scale(1.12) translateY(-3px)}100%{transform:scale(1.1) translateY(0)}}';
         out+='.ll{animation:lb .5s ease-out;}';
         out+='#frog{opacity:0;position:absolute;width:calc(10vw*'+heroSize+'/100);height:calc(10vw*'+heroSize+'/100);max-width:calc(90px*'+heroSize+'/100);max-height:calc(90px*'+heroSize+'/100);'+(imgHero?'background:url("'+imgHero+'") no-repeat center/contain;':'font-size:calc(50px*'+heroSize+'/100);line-height:1;text-align:center;')+'transform:translate(-50%,-'+heroV+'%) scale(1.15);filter:drop-shadow(0 8px 14px rgba(0,0,0,.5));z-index:999!important;transition:left .6s cubic-bezier(.47,1.21,.58,1),top .6s cubic-bezier(.47,1.21,.58,1),transform .3s;pointer-events:none;}';
-        if(!imgHero)out+='#frog::after{content:"\\1F438"}';
+        // Лягушка-эмодзи показывается только если нет ни глобального, ни уровневого героя
+        out+='#frog::after{content:"\\1F438";font-size:calc(50px*'+heroSize+'/100);line-height:1;}';
+        // Если глобальный герой задан — скрываем эмодзи через font-size:0
+        if(imgHero)out+='#frog::after{font-size:0!important;}';
         out+='.jf{filter:drop-shadow(0 28px 18px rgba(0,0,0,.35))!important;transform:translate(-50%,calc(-'+heroV+'% - 20%)) scale(1.4)!important;}';
         out+='@keyframes sk{0%{transform:scale(1.1) translate(2px,2px);filter:brightness(1.6) hue-rotate(180deg)}25%{transform:scale(1.1) translate(-2px,-2px)}50%{transform:scale(1.1) translate(2px,-2px)}75%{transform:scale(1.1) translate(-2px,2px)}100%{transform:scale(1.1) translate(0,0);filter:brightness(1)}}';
         out+='.sk{animation:sk .1s infinite;z-index:10!important;}';
@@ -178,7 +181,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#0f172a;font-family:
         out+='var t=TR["'+lang+'"];';
         out+='var currentLevel=1,step=0,lives='+lives+',questions=[],timer=null,lastLeaf=null,gvol=0.5,jumping=false;';
         out+='function glt(l){var m=LM[l];return m&&m.name?m.name:t.level+" "+l;}';
-        out+='function ala(l){var m=LM[l]||{};if(m.bg)document.body.style.background="url("+JSON.stringify(m.bg)+") no-repeat center/cover";else document.body.style.background="";var f=document.getElementById("frog");if(m.hero){f.style.backgroundImage="url("+JSON.stringify(m.hero)+")";f.style.backgroundRepeat="no-repeat";f.style.backgroundSize="contain";f.style.backgroundPosition="center";}else f.style.backgroundImage="";var p=m.platform||"";document.querySelectorAll(".lf").forEach(function(x){if(p){x.style.backgroundImage="url("+JSON.stringify(p)+")";x.style.backgroundSize="contain";x.style.backgroundRepeat="no-repeat";}else x.style.backgroundImage="";});}';
+        out+='function ala(l){var m=LM[l]||{};if(m.bg)document.body.style.background="url("+JSON.stringify(m.bg)+") no-repeat center/cover";else document.body.style.background="";var f=document.getElementById("frog");if(m.hero){f.style.backgroundImage="url("+JSON.stringify(m.hero)+")";f.style.backgroundRepeat="no-repeat";f.style.backgroundSize="contain";f.style.backgroundPosition="center";f.style.fontSize="0";}else{f.style.backgroundImage="";f.style.fontSize="";}var p=m.platform||"";document.querySelectorAll(".lf").forEach(function(x){if(p){x.style.backgroundImage="url("+JSON.stringify(p)+")";x.style.backgroundSize="contain";x.style.backgroundRepeat="no-repeat";}else x.style.backgroundImage="";});}';
         out+='function mkA(s){if(!s)return null;try{return new Audio(s);}catch(e){return null;}}';
         out+='var sounds={start:mkA('+JSON.stringify(sndStart)+'),jump:mkA('+JSON.stringify(sndJump)+'),shock:mkA('+JSON.stringify(sndShock)+'),lose:mkA('+JSON.stringify(sndLose)+'),win:mkA('+JSON.stringify(sndWin)+'),level:mkA('+JSON.stringify(sndLevel)+'),count:mkA('+JSON.stringify(sndCountdown)+')};';
         out+='function ps(s){if(!s)return;try{s.currentTime=0;s.volume=gvol;s.play();}catch(e){}}';
